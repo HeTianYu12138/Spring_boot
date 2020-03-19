@@ -15,7 +15,7 @@ public class MyService {
 		list = new LinkedList<ToDo>();
 	}
 	public List<ToDo> getAllToDo() {
-		return null;
+		return list;
 	}
 	public ToDo getToDoById(int id) {
 		Iterator<ToDo> iterator = list.iterator();
@@ -27,10 +27,22 @@ public class MyService {
 		}
 		return null;
 	}
-	public void postAToDo(ToDo toDo) {
-		list.add(toDo);
+
+	public String deleteAToDO(int id) {
+		Iterator<ToDo> iterator = list.iterator();
+		while(iterator.hasNext()) {
+			ToDo curDo = iterator.next();
+			if(curDo.getId()==id) {
+				list.remove(curDo);
+				return "Success";
+			}
+		}
+		return "No toDo of id "+id;
 	}
-	public void deleteAToDO(int id) {
-		return;
+	public void postAToDo(int id, String content) {
+		list.add(new ToDo(id, content));
+	}
+	public void postAToDo(ToDo todo) {
+		list.add(todo);
 	}
 }
