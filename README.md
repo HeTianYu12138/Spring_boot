@@ -1,1 +1,0 @@
-POST时，只需要输入id和content，createTime将自动生成
